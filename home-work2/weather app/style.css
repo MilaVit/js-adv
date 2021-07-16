@@ -157,7 +157,7 @@
 .textCity form {
     width: auto;
     float: right;
-    margin-top: 5px;
+    margin-top: 11px;
     margin-right: 0px;
 }
 .textCity input[type="text"] {
@@ -180,7 +180,7 @@
     background: none;
     border: none;
     position: absolute;
-    top: 9px;
+    top: 15px;
     right: 2px;
     cursor: pointer;
     display: none;

@@ -7,7 +7,7 @@ let humidity = document.getElementById('current-humidity'),
     countryMain = document.getElementById('country'),
     cityMain = document.getElementById('city'),
     textCity = document.getElementById('textCity'),
-    qwBtn = document.getElementById('textBtn'),
+    textBtn = document.getElementById('textBtn'),
     minTemp = document.getElementById('minTemp'),
     maxTemp = document.getElementById('maxTemp'),
     weather = document.getElementById('weather'),
@@ -18,7 +18,7 @@ let humidity = document.getElementById('current-humidity'),
     
 textCity.addEventListener('focus', showBtn);
 getWeatherButton.addEventListener('click', getWeatherCoordinates);
-qwBtn.addEventListener('click',getWeatherCity);
+textBtn.addEventListener('click',getWeatherCity);
 
 let apiKey = '8034d07ea1d48a3ec6ca5c36b6a0dcb4';
 let informCelsius;
@@ -103,7 +103,7 @@ function removeBlock() {
 
 function showBtn() {
     if(textCity !== ''){
-        qwBtn.style.display = 'block';
+        textBtn.style.display = 'block';
         removeBlock()
         displayLoader()
     }
