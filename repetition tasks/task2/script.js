@@ -13,8 +13,11 @@ str5 = "{[]}";
 function validateBrackets(str) {
     let count = [];
     for (let i=0; i<str.length; i++) {
-        if (str[i] === '(' || str[i] === '{' || str[i] === '[')  count.push(findBrackets(str[i]))
-        else if (!count.length || count.pop() !== str[i]) return false;
+        if (str[i] === '(' || str[i] === '{' || str[i] === '[') {
+             count.push(findBrackets(str[i]))
+        } else if (!count.length || count.pop() !== str[i]) {
+            return false;
+        }
     }
     return count.length === 0;
 };
