@@ -8,24 +8,23 @@
 </head>
 <body>
     
-    <script>
-  let palidrome = 'level';
+ <script>
+    let palidrome = 'level';
 
+    function isPalidrom(str) {
+    str = str.toUpperCase();
+    let min = str.length / 2;
+    let i;
 
-function isPalidrom(str) {
-   str = str.toUpperCase();
-   let min = str.length / 2;
-   let i;
+    for(i = 0; i < min; i++) {
+        let count = str[str.length - i - 1];
 
-   for(i = 0; i < min; i++) {
-       let count = str[str.length - 1 - i];
-
-       if(str[i] !== count)  return console.log(false);
-   }
-   return console.log(true);
-}
-
-isPalidrom(palidrome)
-    </script>
+        if (str[i] !== count)  return console.log(false)
+    }
+    return console.log(true)
+    }
+    
+    isPalidrom(palidrome)
+ </script>
 </body>
 </html>

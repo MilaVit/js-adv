@@ -30,7 +30,7 @@ function getWeatherCoordinates() {
             getWeatherData(position.coords.latitude, position.coords.longitude);
         })
     } else {
-        return alert('Could not get current location');
+        return cityMain.innerHTML = 'Could not get current location';
     }
     removeBlock()
     displayLoader()
@@ -40,7 +40,7 @@ function getWeatherData(latitude, longitude) {
     fetch('https://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&appid=' + apiKey)
         .then(response => response.json())
         .then(data => displayData(data))
-        .catch((error) => console.error(error))
+        
         displayLoader();
 }
 
