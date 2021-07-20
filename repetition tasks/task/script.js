@@ -11,15 +11,20 @@ function returnArraysOfNumbers(array) {
     for(let i = 0; i < array.length; i++) {
     let elements = 0;
         for(let k = 0; k < array[i].length; k++) {
-            if(elements < array[i][k] || elements > array[i][-k]) elements = array[i][k]; 
+            if(elements < array[i][k] || elements > array[i][-k]) {
+                elements = array[i][k]; 
+            }
         }
         newArr.push(elements)
     }
     return newArr
 }
 
-console.log(returnArraysOfNumbers(arr1));
-console.log(returnArraysOfNumbers(arr2))
-console.log(returnArraysOfNumbers(arr3))
-console.log(returnArraysOfNumbers(arr4))
+// console.log(returnArraysOfNumbers(arr1));
+// console.log(returnArraysOfNumbers(arr2))
+// console.log(returnArraysOfNumbers(arr3))
+// console.log(returnArraysOfNumbers(arr4))
 
+arr1.map(function(num) {
+    console.log(num)
+})

@@ -12,7 +12,7 @@ let humidity = document.getElementById('current-humidity'),
     maxTemp = document.getElementById('maxTemp'),
     weather = document.getElementById('weather'),
     list = document.getElementById('list'),
-    temp = document.getElementById('location-city-country'),
+    locationCity = document.getElementById('location-city-country'),
     load = document.getElementById('loader');
 
     
@@ -21,10 +21,14 @@ getWeatherButton.addEventListener('click', getWeatherCoordinates);
 textBtn.addEventListener('click',getWeatherCity);
 
 let apiKey = '8034d07ea1d48a3ec6ca5c36b6a0dcb4';
-let informCelsius;
-let timeout;
 
 function getWeatherCoordinates() {
+    searchesCurrentGeolocation()
+    removeBlock()
+    displayLoader()
+}
+
+function searchesCurrentGeolocation() {
     if(navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function(position) {
             getWeatherData(position.coords.latitude, position.coords.longitude);
@@ -32,15 +36,15 @@ function getWeatherCoordinates() {
     } else {
         return cityMain.innerHTML = 'Could not get current location';
     }
-    removeBlock()
-    displayLoader()
 }
 
 function getWeatherData(latitude, longitude) {
     fetch('https://api.openweathermap.org/data/2.5/weather?lat=' + latitude + '&lon=' + longitude + '&appid=' + apiKey)
         .then(response => response.json())
         .then(data => displayData(data))
-        
+        .catch(() => {
+            cityMain.innerHTML = "Your carrent location was not found!"
+        })
         displayLoader();
 }
 
@@ -51,7 +55,7 @@ function getWeatherCity() {
         .then(data => displayData(data))
         .catch((error) => {
             cityMain.innerHTML = "Your city not found";
-            temp.style.display = 'block';
+            locationCity.style.display = 'block';
         })
 }
 
@@ -68,15 +72,14 @@ function displayData(data) {
 
     weather.style.display = 'block';
     list.style.display = 'block';
-    temp.style.display = 'block';
+    locationCity.style.display = 'block';
 
     clear()
 }
 
 getIcon = (icon) => {
     let apiIcon = 'https://openweathermap.org/img/w/' + icon + '.png';
-    let attr = weather.setAttribute('src', apiIcon);
-    return attr;
+    return weather.setAttribute('src', apiIcon);
 }
 
 getCelsius = (num) => { informCelsius = num - 273,15;
@@ -85,8 +88,7 @@ getCelsius = (num) => { informCelsius = num - 273,15;
 
 function displayLoader() {
     if(load.style.visibility='hidden') {
-        timeout = setTimeout(() => load.style.visibility = 'visible');
-        return timeout;
+        return setTimeout(() => load.style.visibility = 'visible');
     }
 }
 
@@ -97,7 +99,7 @@ clear = () => {
 function removeBlock() {
     if(list.style.display = 'block') {
         list.style.display = 'none';
-        temp.style.display = 'none';
+        locationCity.style.display = 'none';
     }
 }
 
