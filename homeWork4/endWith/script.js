@@ -1,8 +1,8 @@
 const STR = 'Hello world';
 
-function endWith (str,search) {
+function endWith (str, search) {
     let leng = -search.length
-    let  = str.slice(leng)
+    let strSlice = str.slice(leng)
 
     if (
         searchStr.length === "" ||
